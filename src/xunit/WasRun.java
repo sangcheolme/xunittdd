@@ -2,27 +2,27 @@ package xunit;
 
 public class WasRun extends TestCase {
 
-	public String log;
+    public String log;
 
-	public WasRun(String name) {
-		super(name);
-	}
+    public WasRun(String name) {
+        super(name);
+    }
 
-	@Override
-	public void beforeEach() {
-		log = "beforeEach";
-	}
+    @Override
+    public void beforeEach() {
+        log = "beforeEach";
+    }
 
-	public void testMethod() {
-		log += " testMethod";
-	}
+    public void testMethod() {
+        log += " testMethod";
+    }
 
-	@Override
-	public void afterEach() {
-		log += " afterEach";
-	}
+    @Override
+    public void afterEach() {
+        log += " afterEach";
+    }
 
-	public void testBrokenMethod() {
-		throw new AssertionError();
-	}
+    public void testBrokenMethod() {
+        throw new AssertionError();
+    }
 }

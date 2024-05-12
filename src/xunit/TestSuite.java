@@ -6,31 +6,31 @@ import java.util.List;
 
 public class TestSuite implements Test {
 
-	List<Test> tests = new ArrayList<>();
+    List<Test> tests = new ArrayList<>();
 
-	public TestSuite(Class<? extends TestCase> testClass) {
-		Arrays.stream(testClass.getMethods())
-			.filter(m -> m.isAnnotationPresent(annotation.Test.class))
-			.forEach(
-				m -> {
-					try {
-						add(testClass.getConstructor(String.class).newInstance(m.getName()));
-					} catch (Exception e) {
-						throw new RuntimeException(e);
-					}
-				}
-			);
-	}
+    public TestSuite(Class<? extends TestCase> testClass) {
+        Arrays.stream(testClass.getMethods())
+            .filter(m -> m.isAnnotationPresent(annotation.Test.class))
+            .forEach(
+                m -> {
+                    try {
+                        add(testClass.getConstructor(String.class).newInstance(m.getName()));
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            );
+    }
 
-	public TestSuite() {
-	}
+    public TestSuite() {
+    }
 
-	public void add(Test test) {
-		tests.add(test);
-	}
+    public void add(Test test) {
+        tests.add(test);
+    }
 
-	@Override
-	public void run(TestResult result) {
-		tests.forEach(t -> t.run(result));
-	}
+    @Override
+    public void run(TestResult result) {
+        tests.forEach(t -> t.run(result));
+    }
 }

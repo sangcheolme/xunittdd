@@ -7,30 +7,30 @@ import java.lang.reflect.Method;
  */
 public class TestCase implements Test {
 
-	protected final String name;
+    protected final String name;
 
-	public TestCase(String name) {
-		this.name = name;
-	}
+    public TestCase(String name) {
+        this.name = name;
+    }
 
-	public void run(TestResult result) {
-		result.testStarted();
+    public void run(TestResult result) {
+        result.testStarted();
 
-		beforeEach();
+        beforeEach();
 
-		try {
-			Method method = getClass().getMethod(name); // 메서드 이름으로 메서드 객체를 얻는다.
-			method.invoke(this); // 메서드 객체를 실행한다.
-		} catch (Exception e) {
-			result.testFailed();
-		}
+        try {
+            Method method = getClass().getMethod(name); // 메서드 이름으로 메서드 객체를 얻는다.
+            method.invoke(this); // 메서드 객체를 실행한다.
+        } catch (Exception e) {
+            result.testFailed();
+        }
 
-		afterEach();
-	}
+        afterEach();
+    }
 
-	public void beforeEach() {
-	}
+    public void beforeEach() {
+    }
 
-	public void afterEach() {
-	}
+    public void afterEach() {
+    }
 }
