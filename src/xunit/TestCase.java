@@ -1,6 +1,5 @@
 package xunit;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
@@ -14,17 +13,24 @@ public class TestCase {
 		this.name = name;
 	}
 
-	public void run() {
+	public void run(TestResult result) {
+		result.testStarted();
+
 		beforeEach();
 
 		try {
 			Method method = getClass().getMethod(name); // 메서드 이름으로 메서드 객체를 얻는다.
 			method.invoke(this); // 메서드 객체를 실행한다.
-		} catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-			throw new RuntimeException(e);
+		} catch (Exception e) {
+			result.testFailed();
 		}
+
+		afterEach();
 	}
 
 	public void beforeEach() {
+	}
+
+	public void afterEach() {
 	}
 }

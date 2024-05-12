@@ -16,4 +16,13 @@ public class WasRun extends TestCase {
 	public void testMethod() {
 		log += " testMethod";
 	}
+
+	@Override
+	public void afterEach() {
+		log += " afterEach";
+	}
+
+	public void testBrokenMethod() {
+		throw new AssertionError();
+	}
 }

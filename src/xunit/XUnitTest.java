@@ -3,6 +3,12 @@ package xunit;
 public class XUnitTest {
 
 	public static void main(String[] args) {
-		new TestCaseTest("testTemplateMethod").run();
+		TestResult result = new TestResult();
+		new TestCaseTest("testTemplateMethod").run(result);
+		new TestCaseTest("testResult").run(result);
+		new TestCaseTest("testFailedResultFormating").run(result);
+		new TestCaseTest("testFailedResult").run(result);
+		new TestCaseTest("testSuite").run(result);
+		System.out.println(result.getSummary());
 	}
 }
