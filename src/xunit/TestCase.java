@@ -14,11 +14,16 @@ public class TestCase {
 	}
 
 	public void run() {
+		beforeEach();
+
 		try {
 			Method method = getClass().getMethod(name); // 메서드 이름으로 메서드 객체를 얻는다.
 			method.invoke(this); // 메서드 객체를 실행한다.
 		} catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	public void beforeEach() {
 	}
 }
