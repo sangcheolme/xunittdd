@@ -8,6 +8,10 @@ public class TestCaseTest extends TestCase {
 		super(name);
 	}
 
+	public static TestSuite suite() {
+		return new TestSuite(TestCaseTest.class);
+	}
+
 	public void testTemplateMethod() {
 		WasRun wasRun = new WasRun("testMethod");
 		TestResult result = new TestResult();
