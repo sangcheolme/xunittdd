@@ -7,6 +7,7 @@ import java.lang.reflect.Method;
  * 생성자에 이름을 넣고 run을 하면 그 이름의 메서드를 실행하는 TestCase 클래스
  */
 public class TestCase {
+
 	protected final String name;
 
 	public TestCase(String name) {
