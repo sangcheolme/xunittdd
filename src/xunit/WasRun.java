@@ -1,13 +1,15 @@
 package xunit;
 
-public class WasRun {
+public class WasRun extends TestCase {
 
 	public boolean wasRun;
 
-	public WasRun(String testMethod) {
+	public WasRun(String name) {
+		super(name);
 	}
 
 	public void testMethod() {
 		wasRun = true;
 	}
+
 }
